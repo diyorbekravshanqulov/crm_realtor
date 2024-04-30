@@ -18,7 +18,25 @@ import { DistrictModule } from './district/district.module';
 import { MetroModule } from './metro/metro.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }), PrismaModule, ObjectTypeModule, ResidentTypeModule, ObjectCategoryModule, ObjectStatusModule, CurrencyModule, RenovationModule, WindowSideModule, RoomTypeModule, OwnerShipModule, ReasonDeletingModule, OwnerCoorparetionModule, RelationshipTypeModule, RegionModule, DistrictModule, MetroModule],
+  imports: [
+    ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+    PrismaModule,
+    ObjectTypeModule,
+    ResidentTypeModule,
+    ObjectCategoryModule,
+    ObjectStatusModule,
+    CurrencyModule,
+    RenovationModule,
+    WindowSideModule,
+    RoomTypeModule,
+    OwnerShipModule,
+    ReasonDeletingModule,
+    OwnerCoorparetionModule,
+    RelationshipTypeModule,
+    RegionModule,
+    DistrictModule,
+    MetroModule,
+  ],
   controllers: [],
   providers: [],
 })
