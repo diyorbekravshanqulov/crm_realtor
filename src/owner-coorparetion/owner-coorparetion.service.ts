@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOwnerCoorparetionDto } from './dto/create-owner-coorparetion.dto';
 import { UpdateOwnerCoorparetionDto } from './dto/update-owner-coorparetion.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class OwnerCoorparetionService {
-  create(createOwnerCoorparetionDto: CreateOwnerCoorparetionDto) {
-    return 'This action adds a new ownerCoorparetion';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createOwnerCoorparetionDto: CreateOwnerCoorparetionDto) {
+    return await this.prismaService.ownerCoorperation.create({
+      data: createOwnerCoorparetionDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all ownerCoorparetion`;
+  async findAll() {
+    return await this.prismaService.ownerCoorperation.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ownerCoorparetion`;
+  async findOne(id: number) {
+    return await this.prismaService.ownerCoorperation.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateOwnerCoorparetionDto: UpdateOwnerCoorparetionDto) {
-    return `This action updates a #${id} ownerCoorparetion`;
+  async update(id: number, updateOwnerCoorparetionDto: UpdateOwnerCoorparetionDto) {
+    return await this.prismaService.ownerCoorperation.update({
+      where: {
+        id: id,
+      },
+      data: updateOwnerCoorparetionDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} ownerCoorparetion`;
+  async remove(id: number) {
+    return await this.prismaService.ownerCoorperation.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

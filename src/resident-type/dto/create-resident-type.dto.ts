@@ -1,1 +1,3 @@
-export class CreateResidentTypeDto {}
+export class CreateResidentTypeDto {
+  name: string;
+}

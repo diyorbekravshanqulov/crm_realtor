@@ -1,1 +1,3 @@
-export class CreateWindowSideDto {}
+export class CreateWindowSideDto {
+  name: string;
+}

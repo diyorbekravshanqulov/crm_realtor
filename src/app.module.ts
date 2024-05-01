@@ -16,6 +16,17 @@ import { RelationshipTypeModule } from './relationship-type/relationship-type.mo
 import { RegionModule } from './region/region.module';
 import { DistrictModule } from './district/district.module';
 import { MetroModule } from './metro/metro.module';
+import { WallMaterialModule } from './wall-material/wall-material.module';
+import { OverlapsModule } from './overlaps/overlaps.module';
+import { HeatingSystemModule } from './heating-system/heating-system.module';
+import { BuildingConditionModule } from './building-condition/building-condition.module';
+import { BuildingSeriaModule } from './building-seria/building-seria.module';
+import { WaterSupplyModule } from './water-supply/water-supply.module';
+import { ParkingModule } from './parking/parking.module';
+import { RealtorModule } from './realtor/realtor.module';
+import { ObjectModule } from './object/object.module';
+import { OwnerRelationModule } from './owner-relation/owner-relation.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
   imports: [
@@ -36,6 +47,17 @@ import { MetroModule } from './metro/metro.module';
     RegionModule,
     DistrictModule,
     MetroModule,
+    WallMaterialModule,
+    OverlapsModule,
+    HeatingSystemModule,
+    BuildingConditionModule,
+    BuildingSeriaModule,
+    WaterSupplyModule,
+    ParkingModule,
+    RealtorModule,
+    ObjectModule,
+    OwnerRelationModule,
+    AddressModule,
   ],
   controllers: [],
   providers: [],

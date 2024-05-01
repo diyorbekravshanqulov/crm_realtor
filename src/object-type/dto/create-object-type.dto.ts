@@ -1,1 +1,3 @@
-export class CreateObjectTypeDto {}
+export class CreateObjectTypeDto {
+  name: string;
+}

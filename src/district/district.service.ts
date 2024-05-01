@@ -1,26 +1,46 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDistrictDto } from './dto/create-district.dto';
 import { UpdateDistrictDto } from './dto/update-district.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class DistrictService {
-  create(createDistrictDto: CreateDistrictDto) {
-    return 'This action adds a new district';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createDistrictDto: CreateDistrictDto) {
+    return await this.prismaService.district.create({
+      data: createDistrictDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all district`;
+  async findAll() {
+    return await this.prismaService.district.findMany({
+      include: { region_id: true },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} district`;
+  async findOne(id: number) {
+    return await this.prismaService.district.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateDistrictDto: UpdateDistrictDto) {
-    return `This action updates a #${id} district`;
+  async update(id: number, updateDistrictDto: UpdateDistrictDto) {
+    return await this.prismaService.district.update({
+      where: {
+        id: id,
+      },
+      data: updateDistrictDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} district`;
+  async remove(id: number) {
+    return await this.prismaService.district.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

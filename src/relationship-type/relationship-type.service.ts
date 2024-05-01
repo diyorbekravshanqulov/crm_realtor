@@ -1,26 +1,47 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRelationshipTypeDto } from './dto/create-relationship-type.dto';
 import { UpdateRelationshipTypeDto } from './dto/update-relationship-type.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class RelationshipTypeService {
-  create(createRelationshipTypeDto: CreateRelationshipTypeDto) {
-    return 'This action adds a new relationshipType';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createRelationshipTypeDto: CreateRelationshipTypeDto) {
+    return await this.prismaService.relationshipType.create({
+      data: createRelationshipTypeDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all relationshipType`;
+  async findAll() {
+    return await this.prismaService.relationshipType.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} relationshipType`;
+  async findOne(id: number) {
+    return await this.prismaService.relationshipType.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateRelationshipTypeDto: UpdateRelationshipTypeDto) {
-    return `This action updates a #${id} relationshipType`;
+  async update(
+    id: number,
+    updateRelationshipTypeDto: UpdateRelationshipTypeDto,
+  ) {
+    return await this.prismaService.relationshipType.update({
+      where: {
+        id: id,
+      },
+      data: updateRelationshipTypeDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} relationshipType`;
+  async remove(id: number) {
+    return await this.prismaService.relationshipType.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

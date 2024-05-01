@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateObjectStatusDto } from './dto/create-object-status.dto';
 import { UpdateObjectStatusDto } from './dto/update-object-status.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class ObjectStatusService {
-  create(createObjectStatusDto: CreateObjectStatusDto) {
-    return 'This action adds a new objectStatus';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createObjectStatusDto: CreateObjectStatusDto) {
+    return await this.prismaService.objectStatus.create({
+      data: createObjectStatusDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all objectStatus`;
+  async findAll() {
+    return await this.prismaService.objectStatus.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} objectStatus`;
+  async findOne(id: number) {
+    return await this.prismaService.objectStatus.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateObjectStatusDto: UpdateObjectStatusDto) {
-    return `This action updates a #${id} objectStatus`;
+  async update(id: number, updateObjectStatusDto: UpdateObjectStatusDto) {
+    return await this.prismaService.objectStatus.update({
+      where: {
+        id: id,
+      },
+      data: updateObjectStatusDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} objectStatus`;
+  async remove(id: number) {
+    return await this.prismaService.objectStatus.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

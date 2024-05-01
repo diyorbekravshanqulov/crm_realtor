@@ -1,1 +1,3 @@
-export class CreateOwnerCoorparetionDto {}
+export class CreateOwnerCoorparetionDto {
+  name: string;
+}

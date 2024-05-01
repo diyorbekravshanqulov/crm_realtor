@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateReasonDeletingDto } from './dto/create-reason-deleting.dto';
 import { UpdateReasonDeletingDto } from './dto/update-reason-deleting.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class ReasonDeletingService {
-  create(createReasonDeletingDto: CreateReasonDeletingDto) {
-    return 'This action adds a new reasonDeleting';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createReasonDeletingDto: CreateReasonDeletingDto) {
+    return await this.prismaService.reasonDeleting.create({
+      data: createReasonDeletingDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all reasonDeleting`;
+  async findAll() {
+    return await this.prismaService.reasonDeleting.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} reasonDeleting`;
+  async findOne(id: number) {
+    return await this.prismaService.reasonDeleting.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateReasonDeletingDto: UpdateReasonDeletingDto) {
-    return `This action updates a #${id} reasonDeleting`;
+  async update(id: number, updateReasonDeletingDto: UpdateReasonDeletingDto) {
+    return await this.prismaService.reasonDeleting.update({
+      where: {
+        id: id,
+      },
+      data: updateReasonDeletingDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} reasonDeleting`;
+  async remove(id: number) {
+    return await this.prismaService.reasonDeleting.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

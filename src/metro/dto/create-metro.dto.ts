@@ -1,1 +1,3 @@
-export class CreateMetroDto {}
+export class CreateMetroDto {
+  name: string;
+}

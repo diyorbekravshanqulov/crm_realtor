@@ -1,1 +1,3 @@
-export class CreateReasonDeletingDto {}
+export class CreateReasonDeletingDto {
+  name: string;
+}

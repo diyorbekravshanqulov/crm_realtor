@@ -1,1 +1,3 @@
-export class CreateOwnerShipDto {}
+export class CreateOwnerShipDto {
+  name: string;
+}

@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMetroDto } from './dto/create-metro.dto';
 import { UpdateMetroDto } from './dto/update-metro.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class MetroService {
-  create(createMetroDto: CreateMetroDto) {
-    return 'This action adds a new metro';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createMetroDto: CreateMetroDto) {
+    return await this.prismaService.metro.create({
+      data: createMetroDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all metro`;
+  async findAll() {
+    return await this.prismaService.metro.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} metro`;
+  async findOne(id: number) {
+    return await this.prismaService.metro.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateMetroDto: UpdateMetroDto) {
-    return `This action updates a #${id} metro`;
+  async update(id: number, updateMetroDto: UpdateMetroDto) {
+    return await this.prismaService.metro.update({
+      where: {
+        id: id,
+      },
+      data: updateMetroDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} metro`;
+  async remove(id: number) {
+    return await this.prismaService.metro.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

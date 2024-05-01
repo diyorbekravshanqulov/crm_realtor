@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRenovationDto } from './dto/create-renovation.dto';
 import { UpdateRenovationDto } from './dto/update-renovation.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class RenovationService {
-  create(createRenovationDto: CreateRenovationDto) {
-    return 'This action adds a new renovation';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createRenovationDto: CreateRenovationDto) {
+    return await this.prismaService.renovation.create({
+      data: createRenovationDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all renovation`;
+  async findAll() {
+    return await this.prismaService.renovation.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} renovation`;
+  async findOne(id: number) {
+    return await this.prismaService.renovation.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateRenovationDto: UpdateRenovationDto) {
-    return `This action updates a #${id} renovation`;
+  async update(id: number, updateRenovationDto: UpdateRenovationDto) {
+    return await this.prismaService.renovation.update({
+      where: {
+        id: id,
+      },
+      data: updateRenovationDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} renovation`;
+  async remove(id: number) {
+    return await this.prismaService.renovation.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

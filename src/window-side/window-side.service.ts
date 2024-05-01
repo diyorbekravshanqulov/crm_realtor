@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWindowSideDto } from './dto/create-window-side.dto';
 import { UpdateWindowSideDto } from './dto/update-window-side.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class WindowSideService {
-  create(createWindowSideDto: CreateWindowSideDto) {
-    return 'This action adds a new windowSide';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createWindowSideDto: CreateWindowSideDto) {
+    return await this.prismaService.windowSide.create({
+      data: createWindowSideDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all windowSide`;
+  async findAll() {
+    return await this.prismaService.windowSide.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} windowSide`;
+  async findOne(id: number) {
+    return await this.prismaService.windowSide.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateWindowSideDto: UpdateWindowSideDto) {
-    return `This action updates a #${id} windowSide`;
+  async update(id: number, updateWindowSideDto: UpdateWindowSideDto) {
+    return await this.prismaService.windowSide.update({
+      where: {
+        id: id,
+      },
+      data: updateWindowSideDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} windowSide`;
+  async remove(id: number) {
+    return await this.prismaService.windowSide.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

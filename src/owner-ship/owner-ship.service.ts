@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOwnerShipDto } from './dto/create-owner-ship.dto';
 import { UpdateOwnerShipDto } from './dto/update-owner-ship.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class OwnerShipService {
-  create(createOwnerShipDto: CreateOwnerShipDto) {
-    return 'This action adds a new ownerShip';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createOwnerShipDto: CreateOwnerShipDto) {
+    return await this.prismaService.ownership.create({
+      data: createOwnerShipDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all ownerShip`;
+  async findAll() {
+    return await this.prismaService.ownership.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ownerShip`;
+  async findOne(id: number) {
+    return await this.prismaService.ownership.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateOwnerShipDto: UpdateOwnerShipDto) {
-    return `This action updates a #${id} ownerShip`;
+  async update(id: number, updateOwnerShipDto: UpdateOwnerShipDto) {
+    return await this.prismaService.ownership.update({
+      where: {
+        id: id,
+      },
+      data: updateOwnerShipDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} ownerShip`;
+  async remove(id: number) {
+    return await this.prismaService.ownership.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

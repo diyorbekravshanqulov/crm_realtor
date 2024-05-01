@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateResidentTypeDto } from './dto/create-resident-type.dto';
 import { UpdateResidentTypeDto } from './dto/update-resident-type.dto';
+import { PrismaService } from '../prisma/prisma.service'; // Assuming PrismaService exists
 
 @Injectable()
 export class ResidentTypeService {
-  create(createResidentTypeDto: CreateResidentTypeDto) {
-    return 'This action adds a new residentType';
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async create(createResidentTypeDto: CreateResidentTypeDto) {
+    return await this.prismaService.residentType.create({
+      data: createResidentTypeDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all residentType`;
+  async findAll() {
+    return await this.prismaService.residentType.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} residentType`;
+  async findOne(id: number) {
+    return await this.prismaService.residentType.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  update(id: number, updateResidentTypeDto: UpdateResidentTypeDto) {
-    return `This action updates a #${id} residentType`;
+  async update(id: number, updateResidentTypeDto: UpdateResidentTypeDto) {
+    return await this.prismaService.residentType.update({
+      where: {
+        id: id,
+      },
+      data: updateResidentTypeDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} residentType`;
+  async remove(id: number) {
+    return await this.prismaService.residentType.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

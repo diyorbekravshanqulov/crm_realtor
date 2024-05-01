@@ -1,1 +1,3 @@
-export class CreateRenovationDto {}
+export class CreateRenovationDto {
+  name: string;
+}

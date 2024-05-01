@@ -16,11 +16,11 @@ datasource db {
 model Realtor {
   id            Int      @id @default(autoincrement())
   name          String?
-  is_active     Boolean
-  deactive_date DateTime
-  photo         String
-  login         String
-  password      String
+  is_active     Boolean?
+  deactive_date DateTime?
+  photo         String?
+  login         String?
+  password      String?
   firma_id      Firma[]
 
   createdAt DateTime @default(now())
@@ -347,36 +347,36 @@ model Object {
   resident_type_id    ResidentType[]
   object_category_id  ObjectCategory[]
   object_status_id    ObjectStatus[]
-  is_studio           Boolean
-  floor               Int
-  floor_in_building   Int
-  total_area          Decimal
-  live_area           Decimal
-  kitchen_area        Decimal
-  rooms_area          Decimal
-  price               Decimal
+  is_studio           Boolean?
+  floor               Int?
+  floor_in_building   Int?
+  total_area          Decimal?
+  live_area           Decimal?
+  kitchen_area        Decimal?
+  rooms_area          Decimal?
+  price               Decimal?
   currency_id         Currency[]
-  price_per_square    Decimal
-  price_type          String
+  price_per_square    Decimal?
+  price_type          String?
   renovation_id       Renovation[]
   windor_side_id      WindowSide[]
   room_type_id        RoomType[]
-  is_apartment        Boolean
-  is_luxury           Boolean
-  ceiling_height      Int
-  combined_bath_count Int
-  separate_bath_count Int
-  loggia_count        Int
-  loggia_desciption   String
-  balcony_count       Int
-  balcony_description String
-  general_description String
-  cadastral_number    Int
-  document            String
-  layout              String
-  fotos               String
-  online_show         Boolean
-  video               String
+  is_apartment        Boolean?
+  is_luxury           Boolean?
+  ceiling_height      Int?
+  combined_bath_count Int?
+  separate_bath_count Int?
+  loggia_count        Int?
+  loggia_desciption   String?
+  balcony_count       Int?
+  balcony_description String?
+  general_description String?
+  cadastral_number    Int?
+  document            String?
+  layout              String?
+  fotos               String?
+  online_show         Boolean?
+  video               String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -390,13 +390,13 @@ model OwnerRelation {
   reason_deleting_id    ReasonDeleting[]
   owner_coorparetion_id OwnerCoorperation[]
   relationship_type_id  RelationshipType[]
-  commision_amount      Decimal
-  commision_comment     String
-  deposit_amount        Decimal
-  deposit_paid          Decimal
-  owner_price_ideal     Decimal
-  owner_price_real      Decimal
-  owner_price_minimal   Decimal
+  commision_amount      Decimal?
+  commision_comment     String?
+  deposit_amount        Decimal?
+  deposit_paid          Decimal?
+  owner_price_ideal     Decimal?
+  owner_price_real      Decimal?
+  owner_price_minimal   Decimal?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -408,32 +408,32 @@ model Address {
   id                       Int                 @id @default(autoincrement())
   region_id                Region[]
   district_id              District[]
-  area_id                  String
+  area_id                  String?
   neighborhood_id          Neighborhood[]
   street_id                Street[]
-  house_number             Int
-  apartment_id             Int
-  location                 String
-  landmark                 String
+  house_number             Int?
+  apartment_id             Int?
+  location                 String?
+  landmark                 String?
   metro_id                 Metro[]
-  location_description     String
+  location_description     String?
   building_condition_id    BuildingCondition[]
   building_seria_id        BuildingSeria[]
-  building_year            Int
+  building_year            Int?
   wall_material_id         WallMaterial[]
   overlaps_id              Overlaps[]
   water_supply_id          WaterSupply[]
   heating_system_id        HeatingSystem[]
-  is_gas                   Boolean
-  is_electric              Boolean
-  passeger_elevators_count Int
-  freight_elevators_count  Int
-  is_building_security     Boolean
+  is_gas                   Boolean?
+  is_electric              Boolean?
+  passeger_elevators_count Int?
+  freight_elevators_count  Int?
+  is_building_security     Boolean?
   parking_id               Parking[]
-  is_demolition_planned    Boolean
+  is_demolition_planned    Boolean?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("adress")
+  @@map("address")
 }
