@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [ParkingController],
   providers: [ParkingService],
+  exports: [ParkingService]
 })
 export class ParkingModule {}

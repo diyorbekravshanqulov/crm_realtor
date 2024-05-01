@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [MetroController],
   providers: [MetroService],
+  exports: [MetroService]
 })
 export class MetroModule {}

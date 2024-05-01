@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [RealtorController],
   providers: [RealtorService],
+  exports: [RealtorService]
 })
 export class RealtorModule {}

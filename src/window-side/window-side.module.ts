@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [WindowSideController],
   providers: [WindowSideService],
+  exports: [WindowSideController]
 })
 export class WindowSideModule {}

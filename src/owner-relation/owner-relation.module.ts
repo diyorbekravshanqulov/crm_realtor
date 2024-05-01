@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [OwnerRelationController],
   providers: [OwnerRelationService],
+  exports: [OwnerRelationService]
 })
 export class OwnerRelationModule {}

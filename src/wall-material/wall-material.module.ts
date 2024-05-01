@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [WallMaterialController],
   providers: [WallMaterialService],
+  exports: [WallMaterialService]
 })
 export class WallMaterialModule {}

@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [HeatingSystemController],
   providers: [HeatingSystemService],
+  exports: [HeatingSystemService]
 })
 export class HeatingSystemModule {}

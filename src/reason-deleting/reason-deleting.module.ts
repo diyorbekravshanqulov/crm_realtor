@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [ReasonDeletingController],
   providers: [ReasonDeletingService],
+  exports: [ReasonDeletingService]
 })
 export class ReasonDeletingModule {}

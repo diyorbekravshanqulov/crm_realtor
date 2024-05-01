@@ -27,6 +27,7 @@ import { RealtorModule } from './realtor/realtor.module';
 import { ObjectModule } from './object/object.module';
 import { OwnerRelationModule } from './owner-relation/owner-relation.module';
 import { AddressModule } from './address/address.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { AddressModule } from './address/address.module';
     ObjectModule,
     OwnerRelationModule,
     AddressModule,
+    AdminModule,
   ],
   controllers: [],
   providers: [],

@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [OverlapsController],
   providers: [OverlapsService],
+  exports: [OverlapsService]
 })
 export class OverlapsModule {}

@@ -4,7 +4,7 @@ import { OwnerShipController } from './owner-ship.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule],
+  imports: ,
   controllers: [OwnerShipController],
   providers: [OwnerShipService],
 })

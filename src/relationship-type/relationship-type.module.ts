@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [RelationshipTypeController],
   providers: [RelationshipTypeService],
+  exports: [RelationshipTypeService]
 })
 export class RelationshipTypeModule {}

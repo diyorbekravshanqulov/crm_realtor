@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [BuildingConditionController],
   providers: [BuildingConditionService],
+  exports: [BuildingConditionService]
 })
 export class BuildingConditionModule {}

@@ -1,1 +1,3 @@
-export class CreateBuildingSeriaDto {}
+export class CreateBuildingSeriaDto {
+  name: string;
+}

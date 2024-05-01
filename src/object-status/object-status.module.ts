@@ -7,5 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   imports: [PrismaModule],
   controllers: [ObjectStatusController],
   providers: [ObjectStatusService],
+  exports: [ObjectStatusService]
 })
 export class ObjectStatusModule {}
